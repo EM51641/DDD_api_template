@@ -22,7 +22,7 @@ jobs:
         uses: EM51641/DDD_api_template/.github/actions/build_app@main
 
       - name: Execute Pytest
-        run: poetry run python -m pytest --cov=template_api tests/unit
+        run: poetry run python -m pytest --cov=app tests/unit
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
