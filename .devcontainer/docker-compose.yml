@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    env_file: .env
+
+    volumes:
+      - ..:/workspaces:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Restart if stopped
+    restart: unless-stopped
+
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
+    networks:
+      - prod-main
+      - dev-main
+
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+
+    volumes:
+      - postgres-data-template_api:/var/lib/postgresql/data
+
+    environment:
+      POSTGRES_SERVER: ${POSTGRES_SERVER}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+    ports:
+      - "5401:5432"
+
+    networks:
+      - prod-main
+
+  db-test:
+    image: postgres:latest
+    restart: unless-stopped
+  
+    environment:
+      POSTGRES_SERVER: test-api-db
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test-db
+
+    ports:
+      - "5400:5432"
+
+    networks:
+      - dev-main
+
+networks:
+  dev-main:
+    name: dev_network
+
+  prod-main:
+    name: prod_network
+
+volumes:
+   postgres-data-template_api:

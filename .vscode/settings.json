@@ -1,0 +1,62 @@
+{
+    "mypy-type-checker.severity":  { "error": "Error", "note": "Information", "name-defined": "Warning" },
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "mypy-type-checker.args": [
+        "--follow-imports=silent",
+        "--ignore-missing-imports",
+        "--show-column-numbers",
+        "--no-pretty",
+        "--config-file=/workspaces/mypy.ini"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+    },
+    "python.analysis.autoImportCompletions": true,
+    "mypy-type-checker.showNotification": "always",
+    "mypy-typer-checker.path": [ "<python-path>", "-m", "mypy" ],
+    "black-formatter.args": ["--line-length", "79"],
+    "python.analysis.typeCheckingMode": "basic",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+      },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+      },
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    },
+    "sqltools.connections": [
+      {
+        "previewLimit": 50,
+        "server": "db-test",
+        "port": 5432,
+        "askForPassword": true,
+        "driver": "PostgreSQL",
+        "name": "db-test",
+        "database": "test-db",
+        "username": "test"
+      },
+      {
+        "previewLimit": 50,
+        "server": "db",
+        "port": 5432,
+        "askForPassword": true,
+        "driver": "PostgreSQL",
+        "name": "db",
+        "database": "production-db",
+        "username": "postgres"
+      }
+    ],
+}

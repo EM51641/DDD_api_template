@@ -1,0 +1,30 @@
+name: Linting
+
+on: 
+  workflow_call:
+
+  push:
+    branches:
+      - main
+      - dev
+
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python & Poetry
+        uses: EM51641/template_api/.github/actions/build_app@dev
+        with:
+          poetry-version: "1.6.1"
+          python-version: "3.11.5"
+          poetry-virtualenv: false
+          poetry-virtualenvs-in-project: false
+
+      - name: Execute flake8
+        run:  poetry run flake8 app

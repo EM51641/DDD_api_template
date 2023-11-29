@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "template-api"
+version = "0.1.0"
+description = ""
+authors = ["Elyes Mahjoubi"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.70.0"
+uvicorn = "^0.15.0"
+alembic = "^1.12.1"
+SQLAlchemy = "^2.0.0"
+pydantic = "^1.8.2"
+python-dotenv = "^0.19.2"
+fastapi_class= "^3.3.0"
+asyncpg = "^0.29.0"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.0"
+black = "^21.12b0"
+mypy = "^0.910"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+pytest_asyncio= "^0.21.1"
+httpx = "^0.25.1"
+pytest-cov = "^4.0.0"
+
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+
+[tool.mypy]
+ignore_missing_imports = true
+follow_imports = "silent"
+follow_imports_for_stubs = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_incomplete_stub = true
+warn_redundant_casts = true
+warn_unused_configs = true
+no_implicit_optional = true
+warn_unreachable = true
+check_untyped_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
