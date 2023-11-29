@@ -33,7 +33,7 @@ jobs:
     
     steps:
       - name: Set up Python & Poetry
-        uses: EM51641/DDD_api_template/.github/actions/build_app@dev
+        uses: EM51641/DDD_api_template/.github/actions/build_app@main
 
       - name: Execute Pytest
         run: poetry run python -m pytest --cov=app tests/integration
