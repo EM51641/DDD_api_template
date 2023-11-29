@@ -12,6 +12,10 @@ services:
     volumes:
       - ..:/workspaces:cached
 
+    environment:
+      PYTHONPATH: ${PYTHONPATH}:/workspaces
+      CI: false
+
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 

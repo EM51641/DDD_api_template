@@ -100,10 +100,6 @@ class BaseDatabase:
         """Not implemented yet"""
 
     @abstractmethod
-    async def flush(self) -> None:
-        """Not implemented yet"""
-
-    @abstractmethod
     async def rollback(self) -> None:
         """Not implemented yet"""
 

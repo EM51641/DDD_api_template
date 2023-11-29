@@ -38,7 +38,7 @@ class BaseServiceCreatePart(BaseService[TestUnitOfWork]):
         super().__init__(unit_of_work)
 
     @abstractmethod
-    async def create_part(self, part_dto: PartRegistrationDTO) -> None:
+    async def create_part(self, part_dto: PartRegistrationDTO) -> PartDomain:
         """Not implemented yet"""
 
 
@@ -103,7 +103,7 @@ class BaseServiceCreateTest(BaseService[TestUnitOfWork]):
         super().__init__(unit_of_work)
 
     @abstractmethod
-    async def create_test(self, test_dto: TestRegistrationDTO) -> None:
+    async def create_test(self, test_dto: TestRegistrationDTO) -> TestDomain:
         """Not implemented yet"""
 
 
@@ -206,7 +206,7 @@ class BaseServiceShowTest(BaseService[TestUnitOfWork]):
         super().__init__(unit_of_work)
 
     @abstractmethod
-    async def show_tests(self, limit: int, offset: int) -> list[PartDomain]:
+    async def show_tests(self, limit: int, offset: int) -> list[TestDomain]:
         """Not implemented yet"""
 
 
@@ -307,7 +307,7 @@ class BaseServiceChangeTest(BaseService[TestUnitOfWork]):
         super().__init__(unit_of_work)
 
     @abstractmethod
-    async def update_data(self, dto: TestUpdateDTO) -> None:
+    async def update_data(self, dto: TestUpdateDTO) -> TestDomain:
         """Not implemented yet"""
 
 

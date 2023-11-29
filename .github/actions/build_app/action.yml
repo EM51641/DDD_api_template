@@ -3,22 +3,24 @@ description: Set Poetry and Python
 
 inputs:
     poetry-version:
-      required: true
+      required: false
       type: string
+      default: '1.6.1'
 
     poetry-virtualenv:
       required: false
       type: boolean
-      default: true
+      default: false
     
     poetry-virtualenvs-in-project:
       required: false
       type: boolean
-      default: true
+      default: false
 
     python-version:
-      required: true
+      required: false
       type: string
+      default: '3.11.6'
 
 runs:
   using: "composite"

@@ -145,17 +145,6 @@ class BaseUnitOfWork(ABC):
             await self._db.rollback()
             raise e
 
-    async def _flush_to_db(self) -> None:
-        """
-        Flush changes to the database.
-        """
-        try:
-            await self._db.flush()
-        except Exception as e:
-            logger.exception("Error flushing changes to the database")
-            await self._db.rollback()
-            raise e
-
 
 class AbstractTestUnitOfWork(BaseUnitOfWork):
     @property

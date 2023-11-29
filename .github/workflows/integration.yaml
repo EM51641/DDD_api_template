@@ -13,16 +13,29 @@ on:
       - dev
 
 jobs:
-  build:
+  container-job:
     runs-on: ubuntu-latest
+
+    services:
+      db-test:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test-db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    
     steps:
       - name: Set up Python & Poetry
-        uses: EM51641/template_api/.github/actions/build_app@dev
-        with:
-          poetry-version: '1.6.1'
-          python-version: '3.11.6'
-          poetry-virtualenv: false
-          poetry-virtualenvs-in-project: false
+        uses: EM51641/DDD_api_template/.github/actions/build_app@dev
 
       - name: Execute Pytest
         run: poetry run python -m pytest --cov=app tests/integration
+        env:
+          CI: true

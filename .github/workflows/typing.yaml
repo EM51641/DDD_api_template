@@ -19,12 +19,7 @@ jobs:
 
     steps:
       - name: Set up Python & Poetry
-        uses: EM51641/template_api/.github/actions/build_app@dev
-        with:
-          poetry-version: "1.6.1"
-          python-version: "3.11.5"
-          poetry-virtualenv: false
-          poetry-virtualenvs-in-project: false
+        uses: EM51641/DDD_api_template/.github/actions/build_app@dev
 
       - name: Execute mypy
         run:  poetry run mypy app

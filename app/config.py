@@ -5,10 +5,10 @@ from pydantic import PostgresDsn
 
 database_uri = PostgresDsn.build(
     scheme="postgresql+asyncpg",
-    user=os.environ["POSTGRES_USER"],
-    password=os.environ["POSTGRES_PASSWORD"],
-    host=os.environ["POSTGRES_SERVER"],
-    path=f"/{os.environ['POSTGRES_DB']}",
+    user=os.getenv("POSTGRES_USER"),
+    password=os.getenv("POSTGRES_PASSWORD"),
+    host=os.getenv("POSTGRES_SERVER", "localhost"),
+    path=f"/{os.getenv('POSTGRES_DB')}",
 )
 
 

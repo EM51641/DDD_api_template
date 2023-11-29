@@ -16,6 +16,7 @@ from sqlalchemy.ext.asyncio import (
     AsyncSession,
 )
 import random
+import os
 from app.models import Base, Part, Test
 from app.config import Settings
 from app.main import FastApiManager
@@ -48,13 +49,23 @@ def settings() -> Settings:
     """
     Returns the test database settings.
     """
-    test_db_uri = PostgresDsn.build(
-        scheme="postgresql+asyncpg",
-        user="test",
-        password="test",
-        host="db-test",
-        path="/test-db",
-    )
+    if os.getenv("CI"):
+        test_db_uri = PostgresDsn.build(
+            scheme="postgresql+asyncpg",
+            user="test",
+            password="test",
+            host="localhost",
+            path="/test-db",
+        )
+    else:
+        test_db_uri = PostgresDsn.build(
+            scheme="postgresql+asyncpg",
+            user="test",
+            password="test",
+            host="db-test",
+            path="/test-db",
+        )
+
     return Settings(test_db_uri)
 
 
