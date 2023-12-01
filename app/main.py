@@ -93,9 +93,3 @@ def create_app() -> FastAPI:
     loop = asyncio.get_event_loop()
     loop.create_task(app_manager.init_app())
     return app_manager.app
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run("main:create_app")
