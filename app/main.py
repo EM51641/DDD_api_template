@@ -1,8 +1,10 @@
 import asyncio
-from fastapi import FastAPI, APIRouter
+
+from fastapi import APIRouter, FastAPI
+
 from app.config import Settings
-from app.managers import db_app
 from app.endpoints import router
+from app.managers import db_app
 from app.models import Base
 
 
@@ -10,7 +12,7 @@ class FastApiManager:
     def __init__(
         self,
         settings: Settings = Settings(),
-        title: str = "production-api",
+        title: str = "Api",
         openapi_url: str = "/api/openapi.json",
         version: str = "0.1.0",
     ) -> None:
@@ -19,7 +21,7 @@ class FastApiManager:
 
         Args:
             settings (Settings, optional): The settings to use for the application. Defaults to Settings().
-            title (str, optional): The title of the application. Defaults to "production-api".
+            title (str, optional): The title of the application. Defaults to "api".
             openapi_url (str, optional): The URL for the OpenAPI specification. Defaults to "/api/openapi.json".
             version (str, optional): The version of the application. Defaults to "0.1.0".
         """

@@ -1,4 +1,10 @@
-from app.managers import get_db
+from uuid import UUID
+
+from fastapi import APIRouter, Depends
+from fastapi.responses import JSONResponse
+from fastapi_class import View
+
+from app.exceptions import NoPartFound
 from app.schemas import PartRegistrationDTO, TestRegistrationDTO, TestUpdateDTO
 from app.service import (
     ServiceCreatePart,
@@ -9,19 +15,13 @@ from app.service import (
     ServiceShowTest,
     ServiceUpdateTest,
 )
-from app.exceptions import NoPartFound
-from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi.responses import JSONResponse
-from fastapi_class import View
-from fastapi import APIRouter, Depends
-from uuid import UUID
 
 router = APIRouter()
 
 
-@router.get("/")
-async def get_root(db: AsyncSession = Depends(get_db)) -> str:
-    return "Hello from template_api!"
+@router.get("/", summary="Root", description="Root")
+async def get_root() -> str:
+    return "Welcome to the template api !!"
 
 
 @View(router, path="/parts")
@@ -33,7 +33,8 @@ class PartView:
         skip: int = 0,
     ) -> JSONResponse:
         """
-         Retrieve all parts from the database.
+        Retrieve all parts from the database.
+
         Args:
            service (ServiceShowPart): The service to use for retrieving parts.
            limit (int): The maximum number of parts to retrieve.
@@ -149,6 +150,17 @@ class TestView:
         test_dto: TestUpdateDTO,
         service: ServiceUpdateTest = Depends(ServiceUpdateTest),
     ) -> JSONResponse:
+        """
+        Update a test resource.
+
+        Args:
+            test_dto (TestUpdateDTO): The DTO containing the updated test data.
+            service (ServiceUpdateTest): The service used to update the test data.
+
+        Returns:
+            JSONResponse: The JSON response containing the updated test data.
+        """
+
         test = await service.update_data(test_dto)
         content = test.to_dict()
         return JSONResponse(content=content, status_code=200)

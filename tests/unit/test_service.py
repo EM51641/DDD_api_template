@@ -1,8 +1,11 @@
 from datetime import datetime
+from typing import Any
 from unittest.mock import AsyncMock, Mock, patch
 from uuid import UUID
+
 import pytest
 import pytest_asyncio
+
 from app.domains import PartDomain, TestDomain
 from app.repository import PartRepository, TestRepository
 from app.schemas import PartRegistrationDTO, TestRegistrationDTO, TestUpdateDTO
@@ -16,7 +19,6 @@ from app.service import (
     ServiceUpdateTest,
 )
 from app.unit_of_work import TestUnitOfWork
-from typing import Any
 
 
 class BaseTestService:

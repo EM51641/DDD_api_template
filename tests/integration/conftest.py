@@ -2,24 +2,26 @@
 This module contains fixtures for setting up and tearing
 down the test environment.
 """
+import os
+import random
 from datetime import datetime, timedelta
 from typing import AsyncGenerator
 from uuid import UUID
-from fastapi import FastAPI
-from pydantic import PostgresDsn
+
 import pytest
 import pytest_asyncio
+from fastapi import FastAPI
 from httpx import AsyncClient
+from pydantic import PostgresDsn
 from sqlalchemy.ext.asyncio import (
-    create_async_engine,
     AsyncEngine,
     AsyncSession,
+    create_async_engine,
 )
-import random
-import os
-from app.models import Base, Part, Test
+
 from app.config import Settings
 from app.main import FastApiManager
+from app.models import Base, Part, Test
 
 
 @pytest.fixture
@@ -35,8 +37,8 @@ def setup_base_sqlalchemy_class():
     """
     Setups a base SQLAlchemy class for testing.
     """
-    from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase
     from sqlalchemy import UUID as UUID_
+    from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
     class FakeBaseEntity(DeclarativeBase):
         id: Mapped[UUID] = mapped_column(UUID_(as_uuid=True), primary_key=True)

@@ -1,6 +1,8 @@
-import pytest
 from datetime import datetime
 from uuid import UUID
+
+import pytest
+
 from app.domains import PartDomain, TestDomain
 from app.mappers import PartEntityDomainMapper, TestEntityDomainMapper
 from app.models import Part, Test

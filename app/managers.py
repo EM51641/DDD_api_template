@@ -2,8 +2,8 @@
 Module for database managers.
 """
 from typing import AsyncGenerator
-from app.database import DatabaseApp, Database
 
+from app.database import Database, DatabaseApp
 
 db_app = DatabaseApp()
 

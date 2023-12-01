@@ -1,8 +1,9 @@
 """
 This module defines the Session Manager and related classes.
 """
-from typing import Literal, NamedTuple
 from abc import ABC, abstractmethod
+from typing import Literal, NamedTuple
+
 from app.models import Base
 
 

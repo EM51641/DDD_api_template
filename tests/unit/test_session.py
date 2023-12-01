@@ -1,7 +1,9 @@
+from unittest.mock import Mock
+
 import pytest
+
 from app.models import Base
 from app.session import Session, SessionEntity
-from unittest.mock import Mock
 
 
 class TestSession:
