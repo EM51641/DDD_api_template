@@ -10,19 +10,16 @@ The Test entity is represented by a SQLAlchemy table with the following fields:
 
 The tests ensure that the Test entity table is correctly defined and that its fields match the expected ones.
 """
+from datetime import datetime
 from typing import Any
 from uuid import UUID
+
 import pytest
-from datetime import datetime
-from sqlalchemy import (
-    JSON,
-    Boolean,
-    DateTime,
-    ForeignKey,
-    UUID as UUID_,
-    String,
-)
-from sqlalchemy.orm import mapped_column, Mapped
+from sqlalchemy import JSON
+from sqlalchemy import UUID as UUID_
+from sqlalchemy import Boolean, DateTime, ForeignKey, String
+from sqlalchemy.orm import Mapped, mapped_column
+
 from app.models import Part, Test
 
 

@@ -1,11 +1,11 @@
 """
 Module for Mappers between entity and domain objects.
 """
-from typing import Generic, TypeVar
 from abc import ABC, abstractmethod
+from typing import Generic, TypeVar
+
 from app.domains import BaseDomain, PartDomain, TestDomain
 from app.models import Base, Part, Test
-
 
 TEntity = TypeVar("TEntity", bound=Base)
 TDomain = TypeVar("TDomain", bound=BaseDomain)

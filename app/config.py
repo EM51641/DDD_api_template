@@ -1,7 +1,7 @@
 import os
 from dataclasses import dataclass
-from pydantic import PostgresDsn
 
+from pydantic import PostgresDsn
 
 database_uri = PostgresDsn.build(
     scheme="postgresql+asyncpg",

@@ -2,23 +2,26 @@
 Global Reposiotory
 """
 from __future__ import annotations
+
+from abc import ABC
 from functools import cached_property
 from typing import Generic, Sequence, TypeVar
-from abc import ABC
 from uuid import UUID
+
 from sqlalchemy import select
-from sqlalchemy.sql.selectable import Select
 from sqlalchemy.exc import NoResultFound
+from sqlalchemy.sql.selectable import Select
+
 from app.database import Database
+from app.domains import BaseDomain, PartDomain, TestDomain
+from app.exceptions import NoEntityFoundError
 from app.mappers import (
     BaseEntityDomainMapper,
     PartEntityDomainMapper,
     TestEntityDomainMapper,
 )
-from app.session import Session
-from app.domains import BaseDomain, PartDomain, TestDomain
 from app.models import Base, Part, Test
-from app.exceptions import NoEntityFoundError
+from app.session import Session
 
 TEntity = TypeVar("TEntity", bound=Base)
 TDomain = TypeVar("TDomain", bound=BaseDomain)

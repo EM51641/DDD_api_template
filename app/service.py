@@ -2,14 +2,12 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import Generic, TypeVar
 from uuid import UUID, uuid4
+
 from fastapi import Depends
+
 from app.domains import PartDomain, TestDomain
 from app.exceptions import NoEntityFoundError, NoPartFound
-from app.schemas import (
-    PartRegistrationDTO,
-    TestUpdateDTO,
-    TestRegistrationDTO,
-)
+from app.schemas import PartRegistrationDTO, TestRegistrationDTO, TestUpdateDTO
 from app.unit_of_work import BaseUnitOfWork, TestUnitOfWork
 
 TUnitOfWork = TypeVar("TUnitOfWork", bound=BaseUnitOfWork)

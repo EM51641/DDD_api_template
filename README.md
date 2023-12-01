@@ -19,7 +19,6 @@ To launch an API instance, you should:
 1. Have a running Postgres instance, e.g. in a container. The application will read the [/devcontainer/.env](.env) file to setup the database.
 2. Create a virtual environment and install the dependencies in it. You can run `poetry install` for that.
 3. Use [start_app.sh](/start_app.sh) to run the server. By default, it will bind to http://localhost:8000.
-4. An automatically generated documentation can be found at http://localhost:8000/docs. The endpoints are accessible at http://localhost:8000/api/<endpoint_name>.
 
 
 
@@ -29,3 +28,12 @@ The whole environment can be started using the command (Meanwhile, you should us
 ```shell
 $ docker compose -f .devcontainer/docker-compose.yml up --detach
 ```
+
+## Documentation.
+
+A full documentation is available thanks to OpenAPI and is available at: http://localhost:8000/docs.
+
+![Alt text](docs/swagger_img.png)
+
+
+You can overwrite the host and port used by the API by setting the environmental variables```HOST``` and ```PORT```. Otherwise, the respective default host and port are ```localhost``` and ```8000``` 

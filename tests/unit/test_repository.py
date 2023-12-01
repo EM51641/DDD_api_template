@@ -1,8 +1,10 @@
-import pytest
 from unittest.mock import Mock, patch
+
+import pytest
 from sqlalchemy import Result, Select
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import NoResultFound
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.database import Database
 from app.domains import BaseDomain
 from app.exceptions import NoEntityFoundError

@@ -1,9 +1,11 @@
-import pytest
+from datetime import datetime
 from uuid import UUID
+
+import pytest
 import pytest_asyncio
 from sqlalchemy import select, text
-from sqlalchemy.ext.asyncio import AsyncSession, AsyncEngine
-from datetime import datetime
+from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
+
 from app.database import Database
 from app.models import Part
 from app.session import Session

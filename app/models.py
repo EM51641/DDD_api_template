@@ -1,19 +1,15 @@
 from datetime import datetime
 from typing import Any
 from uuid import UUID
-from sqlalchemy import (
-    JSON,
-    Boolean,
-    DateTime,
-    ForeignKey,
-    String,
-    UUID as UUID_,
-)
+
+from sqlalchemy import JSON
+from sqlalchemy import UUID as UUID_
+from sqlalchemy import Boolean, DateTime, ForeignKey, String
 from sqlalchemy.orm import (
-    declared_attr,
     DeclarativeBase,
-    mapped_column,
     Mapped,
+    declared_attr,
+    mapped_column,
 )
 
 

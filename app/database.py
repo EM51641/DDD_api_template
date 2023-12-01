@@ -1,11 +1,13 @@
 from abc import abstractmethod
 from functools import cached_property
+
 from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    AsyncSession,
     async_sessionmaker,
     create_async_engine,
-    AsyncSession,
-    AsyncEngine,
 )
+
 from app.config import Settings
 from app.models import Base
 
